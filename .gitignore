@@ -1,0 +1,7 @@
+wp-config.com
+node_modules
+.lock
+.rar
+.zip
+dummy
+.sql
