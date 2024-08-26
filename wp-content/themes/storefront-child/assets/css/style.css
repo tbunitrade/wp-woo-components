@@ -46,6 +46,10 @@
 	flex-direction: column;
 }
 
+.newsletter-component .subscribe-form form #message {
+	position: absolute;
+}
+
 .newsletter-component .subscribe-form form fieldset {
 	padding: 0;
 	margin: 0;

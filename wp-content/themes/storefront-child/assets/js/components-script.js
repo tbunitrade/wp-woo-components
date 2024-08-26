@@ -33,24 +33,6 @@ document.querySelector('.heartBlock').addEventListener('click', function() {
     // Переключаем класс 'active' при каждом клике
     this.classList.toggle('active');
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-    const productImages = document.querySelectorAll('.product-image');
-
-    productImages.forEach(function (img) {
-        const originalSrc = img.src;
-        const hoverSrc = img.getAttribute('data-hover-image');
-
-        img.addEventListener('mouseenter', function () {
-            img.src = hoverSrc; // Меняем изображение при наведении
-        });
-
-        img.addEventListener('mouseleave', function () {
-            img.src = originalSrc; // Возвращаем исходное изображение при уходе
-        });
-    });
-});
-
 document.getElementById('emailForm').addEventListener('submit', function (e) {
     e.preventDefault(); // Предотвращаем стандартное поведение формы
 
@@ -98,7 +80,8 @@ document.getElementById('emailForm').addEventListener('submit', function (e) {
     xhr.open('POST', ajax_object.ajax_url, true); // Используем ajax_url из локализованного объекта
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
-        if (xhr.status === 200) {
+        console.log('Response received:', xhr.responseText); // Логируем ответ сервера
+        try {
             const response = JSON.parse(xhr.responseText);
             if (response.success) {
                 messageDiv.innerText = 'Email saved successfully!';
@@ -109,9 +92,10 @@ document.getElementById('emailForm').addEventListener('submit', function (e) {
                 messageDiv.innerText = response.data; // Показываем сообщение об ошибке
                 messageDiv.style.color = 'red';
             }
-        } else {
-            messageDiv.innerText = 'Failed to save email. Please try again.';
+        } catch (e) {
+            messageDiv.innerText = 'Error processing response.';
             messageDiv.style.color = 'red';
+            console.error('Failed to parse JSON:', e);
         }
     };
     xhr.onerror = function () {
@@ -121,4 +105,6 @@ document.getElementById('emailForm').addEventListener('submit', function (e) {
     xhr.send('action=save_email&email=' + encodeURIComponent(email) + '&nonce=' + ajax_object.nonce); // Добавляем nonce
 });
 
+
 console.log('init finish');
+

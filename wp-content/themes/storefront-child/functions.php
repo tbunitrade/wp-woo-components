@@ -50,13 +50,13 @@ function save_email_to_database() {
 add_action('wp_ajax_save_email', 'save_email_to_database'); // Для авторизованных пользователей
 add_action('wp_ajax_nopriv_save_email', 'save_email_to_database'); // Для неавторизованных пользователей
 
-// Функция для создания таблицы в базе данных при активации темы
+// Функция для создания таблицы в базе данных, если её нет
 function create_subscribed_emails_table() {
     global $wpdb;
     $table_name = $wpdb->prefix . 'subscribed_emails';
     $charset_collate = $wpdb->get_charset_collate();
 
-    $sql = "CREATE TABLE $table_name (
+    $sql = "CREATE TABLE IF NOT EXISTS $table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         email varchar(255) NOT NULL,
         PRIMARY KEY  (id)
@@ -65,7 +65,9 @@ function create_subscribed_emails_table() {
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta($sql);
 }
-add_action('after_switch_theme', 'create_subscribed_emails_table');
+
+// Хук init для создания таблицы при загрузке WordPress
+add_action('init', 'create_subscribed_emails_table');
 
 // Функция для добавления меню подписанных email-адресов в админку
 function add_subscribed_emails_menu() {
