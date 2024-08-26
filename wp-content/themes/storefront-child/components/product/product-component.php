@@ -2,15 +2,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!---->
 <!--<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">-->
-
 <div class="wrap">
 
-<?php
-$sale = 30;
-// Получаем данные продукта по ID
-$product_id = 57; // ID тестового продукта
-$product = wc_get_product( $product_id );
-
+    <?php
+    $sale = 30;
+    // Получаем данные продукта по ID
+    $product_id = 57; // ID тестового продукта
+    $product = wc_get_product( $product_id );
 
     if ( $product ) :
         $product_name = $product->get_name();
@@ -22,10 +20,10 @@ $product = wc_get_product( $product_id );
             $image_link = wp_get_attachment_url( $attachment_id );
         }
 
-        //var_dump('$image_link',$image_link);
-        //$product_colors = $product->get_attribute( 'color' ); // Предполагаем, что атрибут цвета называется 'pa_color'
-        //$product_colors_array = explode( ',', $product_colors );
-    ?>
+        // Получаем атрибуты цвета
+        $product_colors = $product->get_attribute('pa_color'); // Предполагаем, что атрибут называется 'pa_color'
+        $product_colors_array = explode(',', $product_colors);
+        ?>
 
         <div class="product-component">
             <h2>Top product deals</h2>
@@ -42,23 +40,26 @@ $product = wc_get_product( $product_id );
                     </div>
                 </div>
 
-
-
                 <div class="product-info">
-
                     <div class="price-container">
                         <div class="price">
-                            <p class="regular-price"><span><?php echo get_woocommerce_currency_symbol(); ?></span><?php echo $product->regular_price; ?> </p>
-                            <p class="sale-price"><span><?php echo get_woocommerce_currency_symbol(); ?></span><?php echo $product->sale_price; ?></p>
+                            <p class="regular-price"><span><?php echo get_woocommerce_currency_symbol(); ?></span><?php echo $product->get_regular_price(); ?></p>
+                            <p class="sale-price"><span><?php echo get_woocommerce_currency_symbol(); ?></span><?php echo $product->get_sale_price(); ?></p>
                         </div>
                         <div class="heart">
                             <div class="heartBlock"></div>
                         </div>
-
                     </div>
 
                     <div class="product-description">
-                        <?php echo $product->description;?>
+                        <?php echo $product->get_description(); ?>
+                    </div>
+
+                    <!-- Варианты цвета -->
+                    <div class="product-colors">
+                        <?php foreach ( $product_colors_array as $color ) : ?>
+                            <span class="product-color" style="background-color: <?php echo esc_attr(trim($color)); ?>;"></span>
+                        <?php endforeach; ?>
                     </div>
 
                     <div class="color-container">
@@ -68,20 +69,7 @@ $product = wc_get_product( $product_id );
                         </ul>
                     </div>
 
-                    <!-- Варианты цвета -->
-                    <div class="product-colors-v2" style="display: none">
-
-                        <?php
-                        var_dump('product_colors_array',$product_colors_array);
-                        foreach ( $product_colors_array as $color ) : ?>
-
-                            <span class="product-color" style="background-color: <?php echo esc_attr( $color ); ?>;"></span>
-                        <?php endforeach; ?>
-                    </div>
-
                 </div>
-                <!-- Кнопка "Добавить в корзину" -->
-               
 
                 <!-- Кнопка "Добавить в список желаемого" -->
                 <?php if ( function_exists( 'yith_wcwl_add_to_wishlist' ) ) : ?>
@@ -95,7 +83,6 @@ $product = wc_get_product( $product_id );
     <?php endif; ?>
     <div class="category-link">
         <h2>Limited-time deals</h2>
-
         <a href=''>
             <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/deal-by-category.png">
         </a>

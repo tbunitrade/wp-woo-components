@@ -35,8 +35,16 @@ function save_email_to_database() {
         wp_send_json_error('Invalid email address');
     }
 
-    // Сохранение email в базу данных
+    // Проверка на дублирование email
     $table_name = $wpdb->prefix . 'subscribed_emails'; // Имя таблицы
+    $email_exists = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE email = %s", $email));
+
+    if ($email_exists > 0) {
+        error_log('Duplicate email address: ' . $email);
+        wp_send_json_error('This email is already subscribed.');
+    }
+
+    // Сохранение email в базу данных
     $result = $wpdb->insert($table_name, array('email' => $email));
 
     if ($result === false) {
@@ -59,7 +67,8 @@ function create_subscribed_emails_table() {
     $sql = "CREATE TABLE IF NOT EXISTS $table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         email varchar(255) NOT NULL,
-        PRIMARY KEY  (id)
+        PRIMARY KEY  (id),
+        UNIQUE KEY unique_email (email)
     ) $charset_collate;";
 
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
