@@ -1,0 +1,336 @@
+@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+.class {
+	background: red;
+	color: black;
+}
+
+.newsletter-component {
+	font-family: 'Poppins';
+	background: #FCF4F4;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 100%;
+	max-width: 995px;
+	min-height: 337px;
+	margin: auto;
+}
+
+.newsletter-component .newsletter-info {
+	padding: 40px;
+}
+
+.newsletter-component .newsletter-info h3 {
+	font-size: 48px;
+	font-weight: 700;
+	line-height: 57.6px;
+	text-align: left;
+}
+
+.newsletter-component .newsletter-info a {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 20.16px;
+	text-align: left;
+	text-decoration: none;
+	color: black;
+}
+
+.newsletter-component .newsletter-info a:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.newsletter-component .subscribe-form {
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+}
+
+.newsletter-component .subscribe-form form fieldset {
+	padding: 0;
+	margin: 0;
+	border: none;
+	background: none;
+}
+
+.newsletter-component .subscribe-form form fieldset label:first-child {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 20.16px;
+	text-align: left;
+	color: black;
+	margin-bottom: 16px;
+}
+
+.newsletter-component .subscribe-form form fieldset label:last-child {
+	color: #1B1B1B;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 22.4px;
+	text-align: left;
+}
+
+.newsletter-component .subscribe-form form fieldset input[type=email],
+.newsletter-component .subscribe-form form fieldset #email {
+	width: 447px;
+	height: 49px;
+	border-radius: 10px;
+	background: white;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+	margin: 16px 0;
+	padding-left: 30px;
+}
+
+.newsletter-component .subscribe-form form fieldset input[type=email]:focus,
+.newsletter-component .subscribe-form form fieldset #email:focus {
+	outline: none;
+	border: none;
+}
+
+.newsletter-component .subscribe-form form fieldset input[type=email]::placeholder,
+.newsletter-component .subscribe-form form fieldset #email::placeholder {
+	color: #72757E;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.newsletter-component .subscribe-form form #submit {
+	display: flex;
+	justify-content: center;
+	width: 179px;
+	height: 70px;
+	padding: 0;
+	line-height: 70px;
+	gap: 10px;
+	color: white;
+	text-align: center;
+	background: #C2252C;
+	position: relative;
+	top: 54px;
+	box-shadow: 10px 10px 0px 0px #F3D3D5;
+}
+
+.newsletter-component .subscribe-form form #submit:hover {
+	box-shadow: 10px 10px 0px 0px #000;
+	transition: ease 200ms;
+}
+
+.wrap {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-gap: 1em;
+	font-family: 'Poppins';
+	/*style for category link*/
+}
+
+.wrap .product-component {
+	border: 1px solid #ddd;
+	padding: 15px;
+	margin: 20px;
+	text-align: center;
+}
+
+.wrap .product-component .product {
+	position: relative;
+	width: 100%;
+	max-width: 324px;
+	min-height: 344px;
+}
+
+.wrap .product-component .product img {
+	width: 100%;
+	max-width: 324px;
+	height: 228px;
+	margin: auto;
+}
+
+.wrap .product-component .product .sale {
+	position: absolute;
+	top: 5%;
+	right: 5%;
+	width: 48px;
+	height: 48px;
+	background: #C2252C;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.wrap .product-component .product .sale em {
+	font-style: normal;
+	color: white;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 20.16px;
+}
+
+.wrap .product-component .product .product-info {
+	background: #f9f9f9;
+	padding: 12px;
+	position: relative;
+}
+
+.wrap .product-component .product .product-info p {
+	margin: 0;
+}
+
+.wrap .product-component .product .product-info .price-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.wrap .product-component .product .product-info .price-container .price {
+	font-size: 1.2em;
+	color: #333;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-content: start;
+	max-width: 150px;
+	align-items: baseline;
+}
+
+.wrap .product-component .product .product-info .price-container .price .regular-price {
+	color: #C2252C;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 22.68px;
+}
+
+.wrap .product-component .product .product-info .price-container .price .sale-price {
+	text-decoration: line-through;
+	color: #8D8D8D;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 20.16px;
+}
+
+.wrap .product-component .product .product-info .price-container .heart .heartBlock {
+	background-image: url("../img/heart.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.wrap .product-component .product .product-info .price-container .heart .heartBlock:hover {
+	background-image: url("../img/heartactive.png");
+}
+
+.wrap .product-component .product .product-info .price-container .heart .heartBlock.active {
+	background-image: url("../img/heartactive.png");
+}
+
+.wrap .product-component .product .product-info .price-container .product-colors {
+	display: flex;
+	justify-content: center;
+	margin: 10px 0;
+}
+
+.wrap .product-component .product .product-info .price-container .product-color {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	margin: 0 5px;
+	cursor: pointer;
+	border: 1px solid #ddd;
+}
+
+.wrap .product-component .product .product-info .color-container .ul-colors {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.wrap .product-component .product .product-info .color-container .ul-colors li {
+	list-style-type: none;
+	width: 16px;
+	height: 16px;
+	margin: 4px;
+}
+
+.wrap .product-component .product .product-info .color-container .ul-colors li:hover {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.wrap .product-component .product .product-info .color-container .ul-colors .blue {
+	background: #209EEB;
+}
+
+.wrap .product-component .product .product-info .color-container .ul-colors .red {
+	background: #D787E3;
+}
+
+.wrap .product-component .product .product-info .color-container .ul-colors .active {
+	width: 20px;
+	height: 20px;
+}
+
+.wrap .product-component .product .product-info .product-description {
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 20.8px;
+	color: #19191D;
+	text-align: left;
+}
+
+.wrap .product-component .product .imgContainer {
+	position: relative;
+}
+
+.wrap .product-component .product .imgContainer .add-to-cart {
+	position: absolute;
+	display: none;
+	transition: ease-out 1s;
+	background-color: rgba(232, 232, 232, 0.7);
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 51px;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+.wrap .product-component .product .imgContainer .add-to-cart a {
+	color: #1B1B1B;
+	width: 100%;
+	height: 100%;
+	display: block;
+	text-align: center;
+}
+
+.wrap .product-component .product .imgContainer .add-to-cart a:hover {
+	text-decoration: underline;
+}
+
+.wrap .product-component .product .imgContainer .product-image {
+	width: 100%;
+	height: auto;
+	transition: opacity 0.3s ease;
+}
+
+.wrap .product-component .product .active {
+	display: block;
+}
+
+.wrap .product-component .product:hover .add-to-cart {
+	display: block;
+}
+
+.wrap .category-link {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+/*# sourceMappingURL=style.css.map */
