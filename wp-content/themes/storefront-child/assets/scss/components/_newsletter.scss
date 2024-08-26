@@ -1,0 +1,125 @@
+.newsletter-component{
+  font-family: 'Poppins';
+  background: #FCF4F4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 995px;
+  min-height: 337px;
+  margin: auto;
+
+  .newsletter-info {
+    padding: 40px;
+    h3 {
+      //styleName: Poppins 48 Bold;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 57.6px;
+      text-align: left;
+
+    }
+
+    a{
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 20.16px;
+      text-align: left;
+      text-decoration: none;
+      color: black;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+    }
+  }
+
+  .subscribe-form {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+
+    form {
+      //display: flex;
+
+      fieldset {
+        padding: 0;
+
+        margin: 0;
+        border: none;
+        background: none;
+
+        label {
+
+          &:first-child{
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20.16px;
+            text-align: left;
+            color:black;
+            margin-bottom: 16px;
+          }
+
+          &:last-child{
+            color:#1B1B1B;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22.4px;
+            text-align: left;
+
+          }
+        }
+        input[type=email],
+        #email {
+          width: 447px;
+          height: 49px;
+          border-radius: 10px;
+          background: white;
+          border: none;
+          box-shadow:none;
+
+          padding: 0;
+          margin: 16px 0;
+          padding-left: 30px;
+
+          &:focus{
+            outline: none;
+            border: none;
+          }
+
+          &::placeholder {
+            color:#72757E;
+            font-size: 14px;
+            line-height: 22px;
+          }
+        }
+      }
+
+      #submit {
+        display: flex;
+        justify-content: center;
+        width: 179px;
+        height: 70px;
+        padding: 0;
+        //padding: 20px 40px 20px 40px;
+        line-height: 70px;
+        gap: 10px;
+        //opacity: 0px;
+        color:white;
+        text-align: center;
+
+        background: #C2252C;
+        position: relative;
+        top:54px;
+        box-shadow: 10px 10px 0px 0px #F3D3D5;
+        &:hover {
+          box-shadow: 10px 10px 0px 0px #000;
+          transition: ease 200ms;
+        }
+
+      }
+    }
+
+  }
+}
