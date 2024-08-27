@@ -3,17 +3,20 @@
 <!---->
 <!--<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">-->
 <div class="wrap">
-
-
-
     <?php
-
     $sale = 30;
-    // Получаем данные продукта по ID
-    $product_id = 57; // ID тестового продукта
-    $product = wc_get_product( $product_id );
 
-    if ( $product ) :
+    // Используем WooCommerce для получения списка продуктов
+    $args = array(
+        'limit' => 1, // Получить только один продукт
+        'status' => 'publish', // Только опубликованные продукты
+    );
+    $products = wc_get_products($args);
+
+    if (!empty($products)) :
+        $product = $products[0]; // Получаем первый продукт из списка
+        $product_id = $product->get_id();
+
         $product_name = $product->get_name();
         $product_price = $product->get_price();
         $product_permalink = get_permalink( $product_id );
